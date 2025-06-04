@@ -18,7 +18,7 @@ jobs:
         run: rustc main.rs --target wasm32-wasip1
       - name: Publish WebAssembly artifact
         run: |
-          gh release create ./main.wasm
+          gh release --latest -p create ./main.wasm
         env:
           GH_TOKEN: ${{ github.token }}
  
