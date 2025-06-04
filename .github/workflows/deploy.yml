@@ -11,7 +11,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Install target for WebAssembly
-        run: rustup target add wasm32-wasip
+        run: rustup target add wasm32-wasip1
       - name: Build WebAssembly
         run: rustc main.rs --target wasm32-wasip1
       - name: Upload WebAssembly artifact
