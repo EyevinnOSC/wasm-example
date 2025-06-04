@@ -14,8 +14,7 @@ jobs:
         run: rustup target add wasm32-wasip1
       - name: Build WebAssembly
         run: rustc main.rs --target wasm32-wasip1
-      - name: Upload WebAssembly artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: wasm-artifact
-          path: main.wasm
+      - name: Publish WebAssembly artifact
+        run: |
+          gh release create ./main.wasm
+ 
