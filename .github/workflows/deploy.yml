@@ -1,0 +1,21 @@
+name: Deploy on push to main
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install target for WebAssembly
+        run: rustup target add wasm32-wasip
+      - name: Build WebAssembly
+        run: rustc main.rs --target wasm32-wasip1
+      - name: Upload WebAssembly artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: wasm-artifact
+          path: main.wasm
