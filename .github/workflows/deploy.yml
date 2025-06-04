@@ -24,8 +24,8 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: Deploy as WASM runner
         run: |
-          npx -y @osaas/cli remove ghdemo -y || true
-          npx -y @osaas/cli create ghdemo -o WasmUrl=https://artifacts.osaas.io/artifacts/main.wasm
+          npx -y @osaas/cli remove eyevinn-wasm-runner ghdemo -y || true
+          npx -y @osaas/cli create eyevinn-wasm-runner ghdemo -o WasmUrl=https://artifacts.osaas.io/artifacts/main.wasm
         env:
           OSC_ACCESS_TOKEN: ${{ secrets.OSC_ACCESS_TOKEN }}
  
