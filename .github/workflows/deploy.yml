@@ -22,7 +22,7 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      - name: Deploy as WASM runner
+      - name: Deploy as WASM runner in Open Source Cloud
         run: |
           npx -y @osaas/cli remove eyevinn-wasm-runner ghdemo -y || true
           npx -y @osaas/cli create eyevinn-wasm-runner ghdemo -o WasmUrl=https://artifacts.osaas.io/artifacts/main.wasm
