@@ -16,9 +16,10 @@ jobs:
         run: rustup target add wasm32-wasip1
       - name: Build WebAssembly
         run: rustc main.rs --target wasm32-wasip1
-      - name: Publish WebAssembly artifact
+      - name: Upload WebAssembly artifact to bucket
         run: |
-          gh release --latest -p create ./main.wasm
+          aws s3 cp --endpoint-url https://eyevinnlab-birme.minio-minio.auto.prod.osaas.io main.wasm s3://artifacts/main.wasm
         env:
-          GH_TOKEN: ${{ github.token }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
  
